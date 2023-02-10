@@ -244,7 +244,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.98}
+  m_Offset: {x: 0, y: 0.96}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0.015625, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -272,15 +272,23 @@ MonoBehaviour:
   speed: 8
   crounchSpeedDivisor: 3
   isCrouch: 0
-  isOnGround: 0
+  isOnGround: 1
   isJump: 0
-  jumpForce: 6.3
+  isHeadBlocked: 0
+  isHanging: 0
+  jumpForce: 6.5
   jumpHoldForce: 1.9
   jumpHoldDuration: 0.1
   crouchJumpBoost: 2.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  footOffset: 0.4
+  headClearance: 0.5
+  groundDistance: 0.2
+  eyeHeight: 1.5
+  grabDistance: 0.4
+  reachOffset: 0.7
   jumpPressed: 0
   jumpHeld: 0
   crouchHeld: 0
