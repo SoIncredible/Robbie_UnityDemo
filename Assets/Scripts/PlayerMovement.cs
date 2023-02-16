@@ -11,19 +11,19 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 collStandSize;
     private Vector2 collCrouchOffset;
     private Vector2 collCrouchSize;
-    [Header("ÒÆ¶¯²ÎÊý")]
+    [Header("ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float speed = 8f;
     public float crounchSpeedDivisor = 3f;
 
     
-    [Header("×´Ì¬²ÎÊý")]
+    [Header("×´Ì¬ï¿½ï¿½ï¿½ï¿½")]
     public bool isCrouch;
     public bool isOnGround;
     public bool isJump;
     public bool isHeadBlocked;
     public bool isHanging;
 
-    [Header("ÌøÔ¾²ÎÊý")]
+    [Header("ï¿½ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½")]
     public float jumpForce = 6.3f;
     public float jumpHoldForce = 1.9f;
     public float jumpHoldDuration = 0.1f;
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float hangJumpForce = 15f;
 
-    [Header("¼ì²â»·¾³")]
+    [Header("ï¿½ï¿½â»·ï¿½ï¿½")]
     public LayerMask groundLayer;
     public float footOffset = 0.4f;
     public float headClearance = 0.5f;
@@ -45,11 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     float jumpTime;
     float xVelocity;
-    [Header("°´¼üÉèÖÃ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public bool jumpPressed;
     public bool jumpHeld;
     public bool crouchHeld;
-    //µ¥´Î°´ÏÂ
+    //ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½
     public bool crouchPressed;
     // Start is called before the first frame update
     void Start()
@@ -189,10 +189,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if(jumpPressed && isOnGround)
+        if(jumpPressed && isOnGround && !isHeadBlocked)
         {
 
-            if(isCrouch && isOnGround && !isHeadBlocked)
+            if(isCrouch && isOnGround)
             {
                 StandUp();
                 rb.AddForce(new Vector2(0f, crouchJumpBoost), ForceMode2D.Impulse);
@@ -204,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
 
             jumpTime = Time.time + jumpHoldDuration;
 
-            //Í»È»²úÉúÒ»¸öÁ¦
+            //Í»È»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
             rb.AddForce(new Vector2(0f,jumpForce),ForceMode2D.Impulse);
             jumpPressed = false;
         }else if (isJump)
