@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHoldDuration = 0.1f;
     public float crouchJumpBoost = 2.5f;
 
-    public float hangJumpForce = 15f;
+    public float hangJumpForce = 25f;
 
     [Header("��⻷��")]
     public LayerMask groundLayer;
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     float jumpTime;
-    float xVelocity;
+    public float xVelocity;
     [Header("��������")]
     public bool jumpPressed;
     public bool jumpHeld;
@@ -69,15 +69,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // GetButton和GetButtonDown的区别
+        
         if (Input.GetButtonDown("Jump"))
         {
+            // 一个持续的过程
             jumpPressed = true;
         }
         if (Input.GetButtonDown("Crouch"))
         {
             crouchPressed = true;
         }
-        
+
+
+        // 瞬时状态 
         jumpHeld = Input.GetButton("Jump");
         crouchHeld = Input.GetButton("Crouch");
        
@@ -149,7 +154,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (isHanging)
             return;
-
         if (crouchHeld && !isCrouch && isOnGround)
         {
             Crouch();
@@ -172,6 +176,10 @@ public class PlayerMovement : MonoBehaviour
 
     void MidAriMovement()
     {
+
+        // 问题描述：
+        // 人物悬挂状态按下空格，可以反复跳
+
 
         if (isHanging)
         {
@@ -207,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
             //ͻȻ����һ����
             rb.AddForce(new Vector2(0f,jumpForce),ForceMode2D.Impulse);
             jumpPressed = false;
+            AudioManager.PlayerJumpAudio();
         }else if (isJump)
         {
             if (jumpHeld)
